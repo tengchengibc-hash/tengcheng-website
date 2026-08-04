@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resources Login | Mofort</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: linear-gradient(160deg, #0a1c1b 0%, #123530 55%, #0b6b5f 100%); }
+  .login-card { width: 100%; max-width: 400px; background: #fff; border-radius: 16px; padding: 36px 30px; box-shadow: 0 18px 50px rgba(0,0,0,.28); text-align: center; }
+  .login-card .brand-logo { margin: 0 auto 14px; height: 54px; background: #fff; border-radius: 10px; padding: 4px 10px; }
+  .login-card h1 { font-size: 20px; margin: 0 0 6px; color: #0a1c1b; }
+  .login-card p { font-size: 13px; color: #678; margin: 0 0 22px; }
+  .login-card .field { text-align: left; margin-bottom: 16px; }
+  .login-card label { font-size: 13px; color: #345; display: block; margin-bottom: 6px; }
+  .login-card input[type=password] { width: 100%; padding: 11px 12px; border: 1px solid rgba(20,60,55,.25); border-radius: 8px; font-size: 15px; box-sizing: border-box; }
+  .login-card .btn { width: 100%; margin-top: 4px; }
+  .login-back { display: inline-block; margin-top: 16px; font-size: 13px; color: #0b6b5f; }
+</style>
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <img class="brand-logo" src="../assets/images/logo-mofort.svg" alt="MoFort">
+    <h1>Resources Center Login</h1>
+    <p>Authorized access for customers and partners.</p>
+    <form id="loginForm">
+      <div class="field"><label for="password">Access password</label><input id="password" name="password" type="password" required autofocus placeholder="Enter password"></div>
+      <button class="btn btn--primary" type="submit">Enter Resources</button>
+    </form>
+    <a class="login-back" href="index.html">&larr; Back to home</a>
+  </div>
+</div>
+<script>
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (document.getElementById("password").value === "molei2026") {
+      sessionStorage.setItem("molei_auth_ok", "1");
+      location.href = "resources.html";
+    } else { alert("Wrong password, please retry"); }
+  });
+</script>
+</body>
+</html>
