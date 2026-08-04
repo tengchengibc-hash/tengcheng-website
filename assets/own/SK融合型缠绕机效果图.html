@@ -1,0 +1,309 @@
+ <!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>SK双专利融合型四角缠绕成型系统 - 产品效果图</title>
+ <style>
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+   body { overflow: hidden; background: #0d1117; font-family: "Microsoft YaHei","PingFang SC",sans-serif; }
+   canvas { display: block; }
+   
+   #panel {
+     position: fixed; top: 16px; right: 16px; z-index: 10;
+     background: rgba(13,17,23,0.94); backdrop-filter: blur(14px);
+     border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+     padding: 20px 24px; color: #b0b8c0; min-width: 250px;
+     font-size: 12.5px; line-height: 1.8;
+   }
+   #panel h2 { font-size: 15px; color: #e6edf3; margin-bottom: 14px; font-weight: 600; letter-spacing: 0.5px; }
+   #panel .section { color: #58a6ff; font-size: 11px; font-weight: 700; margin: 10px 0 4px; letter-spacing: 1px; text-transform: uppercase; }
+   #panel .item { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; padding-left: 2px; }
+   #panel .dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+   #panel .tag { font-size: 10px; color: #58a6ff; background: rgba(88,166,255,0.1); padding: 1px 6px; border-radius: 3px; font-weight: 600; }
+   
+   #title {
+     position: fixed; bottom: 20px; left: 20px; z-index: 10;
+     color: rgba(255,255,255,0.7); font-size: 12.5px; letter-spacing: 0.5px;
+   }
+   
+   #labels { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+   .label-3d {
+     position: absolute; color: #e6edf3; font-size: 11px; font-weight: 600;
+     text-shadow: 0 0 10px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7);
+     transform: translate(-50%,-50%); white-space: nowrap; letter-spacing: 0.5px;
+   }
+   .label-3d::after {
+     content:''; position:absolute; left:50%; top:16px;
+     width:1px; height:14px; background:rgba(255,255,255,0.3); transform:translateX(-50%);
+   }
+   
+   @media (max-width:768px) {
+     #panel { top:auto; bottom:8px; right:4px; padding:12px 14px; font-size:10.5px; min-width:200px; }
+     #panel h2 { font-size:12.5px; }
+   }
+ </style>
+ </head>
+ <body>
+ <div id="panel">
+   <h2>SK 双专利融合型<br>四角缠绕成型系统</h2>
+   <div class="section">▸ 缠绕成型单元</div>
+   <div class="item"><span class="dot" style="background:#7799cc"></span> ① 四角心轴总成<span class="tag">CA517414A</span></div>
+   <div class="item"><span class="dot" style="background:#e67e22"></span> ② ECAM 压紧系统<span class="tag">自有</span></div>
+   <div class="item"><span class="dot" style="background:#ff6b6b"></span> ③ 弹性压力带<span class="tag">US4441948</span></div>
+   <div class="section">▸ 涂胶与放卷单元</div>
+   <div class="item"><span class="dot" style="background:#2ecc71"></span> ④ 胶液涂布辊组<span class="tag">US4441948</span></div>
+   <div class="item"><span class="dot" style="background:#c4a46c"></span> ⑤ 多路放卷集群<span class="tag">CA517414A</span></div>
+   <div class="item"><span class="dot" style="background:#5dade2"></span> ⑥ 摆臂张力补偿<span class="tag">自有</span></div>
+   <div class="section">▸ 辅助单元</div>
+   <div class="item"><span class="dot" style="background:#f39c12"></span> ⑦ 同步皮带牵引<span class="tag">CA517414A</span></div>
+   <div class="item"><span class="dot" style="background:#aaa"></span> ⑧ 裁切断料装置<span class="tag">US4441948</span></div>
+ </div>
+ <div id="title">US 4,441,948 + CA 517,414A · 多层瓦楞连续缠绕 + 胶液涂布 + 弹性压力带 + 多通道张力集群</div>
+ <div id="labels"></div>
+ 
+ <script type="importmap">
+ {"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}
+ </script>
+ 
+ <script type="module">
+ import * as THREE from 'three';
+ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+ 
+ const scene = new THREE.Scene();
+ scene.background = new THREE.Color('#0d1117');
+ scene.fog = new THREE.Fog('#0d1117', 4, 16);
+ const camera = new THREE.PerspectiveCamera(40,innerWidth/innerHeight,0.1,32);
+ camera.position.set(4.5,2.8,6.5); camera.lookAt(0,0.2,0);
+ 
+ const renderer = new THREE.WebGLRenderer({antialias:true});
+ renderer.setSize(innerWidth,innerHeight);
+ renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+ renderer.shadowMap.enabled = true;
+ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+ renderer.toneMapping = THREE.ACESFilmicToneMapping;
+ renderer.toneMappingExposure = 1.15;
+ document.body.appendChild(renderer.domElement);
+ 
+ const controls = new OrbitControls(camera,renderer.domElement);
+ controls.target.set(0,0.2,0); controls.enableDamping=true; controls.dampingFactor=0.07;
+ controls.minDistance=3; controls.maxDistance=10; controls.maxPolarAngle=Math.PI*0.65;
+ controls.autoRotate=true; controls.autoRotateSpeed=0.25; controls.update();
+ 
+ // Lighting
+ scene.add(new THREE.AmbientLight('#667788',1.5));
+ const key = new THREE.DirectionalLight('#ffffff',5);
+ key.position.set(6,9,5); key.castShadow=true;
+ key.shadow.mapSize.set(2048,2048); key.shadow.camera.near=0.3; key.shadow.camera.far=28;
+ key.shadow.camera.left=-7; key.shadow.camera.right=7;
+ key.shadow.camera.top=6; key.shadow.camera.bottom=-3; key.shadow.bias=-0.00025;
+ scene.add(key);
+ scene.add(new THREE.DirectionalLight('#5577aa',2).translateX(-4).translateY(3).translateZ(-3));
+ scene.add(new THREE.DirectionalLight('#ffffff',2.5).translateZ(-6));
+ 
+ // Ground
+ const gnd = new THREE.Mesh(new THREE.PlaneGeometry(18,18),new THREE.MeshStandardMaterial({color:'#111520',roughness:0.7,metalness:0.2}));
+ gnd.rotation.x=-Math.PI/2; gnd.position.y=-2.8; gnd.receiveShadow=true; scene.add(gnd);
+ const grid = new THREE.PolarGridHelper(6,50,25,128,'#1a1a30','#111120');
+ grid.position.y=-2.79; scene.add(grid);
+ 
+ // Materials
+ const M = {
+   steel: new THREE.MeshStandardMaterial({color:'#8899aa',roughness:0.3,metalness:0.85}),
+   steelD: new THREE.MeshStandardMaterial({color:'#556677',roughness:0.35,metalness:0.8}),
+   frame: new THREE.MeshStandardMaterial({color:'#2d3040',roughness:0.5,metalness:0.55}),
+   frameL: new THREE.MeshStandardMaterial({color:'#3d4050',roughness:0.45,metalness:0.5}),
+   orange: new THREE.MeshStandardMaterial({color:'#e67e22',roughness:0.35,metalness:0.1}),
+   belt: new THREE.MeshStandardMaterial({color:'#ff6b6b',roughness:0.6,metalness:0.02}),
+   paper: new THREE.MeshStandardMaterial({color:'#c4a46c',roughness:0.75,metalness:0.02}),
+   paperW: new THREE.MeshStandardMaterial({color:'#d4b896',roughness:0.7,metalness:0.01,side:THREE.DoubleSide}),
+   green: new THREE.MeshStandardMaterial({color:'#2ecc71',roughness:0.3,metalness:0.2}),
+   servo: new THREE.MeshStandardMaterial({color:'#1a2634',roughness:0.3,metalness:0.7}),
+   alum: new THREE.MeshStandardMaterial({color:'#aabbcc',roughness:0.25,metalness:0.9}),
+   carbon: new THREE.MeshStandardMaterial({color:'#222',roughness:0.35,metalness:0.3}),
+   cyl: new THREE.MeshStandardMaterial({color:'#5dade2',roughness:0.2,metalness:0.75}),
+   guide: new THREE.MeshStandardMaterial({color:'#ccc',roughness:0.15,metalness:0.9}),
+   bearing: new THREE.MeshStandardMaterial({color:'#334',roughness:0.25,metalness:0.85}),
+   cutter: new THREE.MeshStandardMaterial({color:'#f39c12',roughness:0.2,metalness:0.75}),
+ };
+ 
+ function box(w,h,d,m,p){const g=new THREE.BoxGeometry(w,h,d),ms=new THREE.Mesh(g,m);if(p)ms.position.set(...p);ms.castShadow=ms.receiveShadow=true;return ms;}
+ function cyl(rt,rb,h,s,m,p,r){const g=new THREE.CylinderGeometry(rt,rb,h,s||32),ms=new THREE.Mesh(g,m);if(p)ms.position.set(...p);if(r){ms.rotation.set(...r);}ms.castShadow=ms.receiveShadow=true;return ms;}
+ 
+ const machine = new THREE.Group(); scene.add(machine);
+ 
+ // ═══ FRAME ═══
+ const frame = new THREE.Group(); machine.add(frame);
+ frame.add(box(4.2,0.1,2.6,M.frameL,[0,-2.05,0]));
+ [[-1.6,-1.05,-1],[1.6,-1.05,-1],[-1.6,-1.05,1],[1.6,-1.05,1]].forEach(p=>frame.add(box(0.08,2,0.08,M.frame,p)));
+ frame.add(box(3.28,0.06,0.06,M.frame,[0,-0.05,-1]));
+ frame.add(box(3.28,0.06,0.06,M.frame,[0,-0.05,1]));
+ 
+ // ═══ ① MANDREL ═══
+ const mandrel = new THREE.Group(); mandrel.position.set(0,0,0); machine.add(mandrel);
+ const mw=0.6,mh=0.42,cr=0.07,ml=2.2;
+ const sh=new THREE.Shape();
+ sh.moveTo(-mw+cr,-mh);sh.lineTo(mw-cr,-mh);sh.quadraticCurveTo(mw,-mh,mw,-mh+cr);sh.lineTo(mw,mh-cr);sh.quadraticCurveTo(mw,mh,mw-cr,mh);sh.lineTo(-mw+cr,mh);sh.quadraticCurveTo(-mw,mh,-mw,mh-cr);sh.lineTo(-mw,-mh+cr);sh.quadraticCurveTo(-mw,-mh,-mw+cr,-mh);
+ const eg=new THREE.ExtrudeGeometry(sh,{steps:1,depth:ml,bevelEnabled:true,bevelThickness:0.01,bevelSize:0.01,bevelSegments:3});
+ eg.translate(0,0,-ml/2);
+ const mm=new THREE.Mesh(eg,M.steel);mm.castShadow=mm.receiveShadow=true;mandrel.add(mm);
+ mandrel.add(cyl(0.06,0.06,0.3,32,M.steelD,[0,0,-1.25],[Math.PI/2,0,0]));
+ mandrel.add(cyl(0.06,0.06,0.3,32,M.steelD,[0,0,1.25],[Math.PI/2,0,0]));
+ 
+ // Paper layers on mandrel
+ for(let i=0;i<2;i++){const lw=mw+(i+1)*0.03,lh=mh+(i+1)*0.03;const s2=new THREE.Shape();s2.moveTo(-lw+cr,-lh);s2.lineTo(lw-cr,-lh);s2.quadraticCurveTo(lw,-lh,lw,-lh+cr);s2.lineTo(lw,lh-cr);s2.quadraticCurveTo(lw,lh,lw-cr,lh);s2.lineTo(-lw+cr,lh);s2.quadraticCurveTo(-lw,lh,-lw,lh-cr);s2.lineTo(-lw,-lh+cr);s2.quadraticCurveTo(-lw,-lh,-lw+cr,-lh);const g2=new THREE.ExtrudeGeometry(s2,{steps:1,depth:ml*0.6,bevelEnabled:false});g2.translate(0,0,-ml*0.3);const lm=new THREE.Mesh(g2,M.paper);lm.castShadow=lm.receiveShadow=true;mandrel.add(lm);}
+ 
+ // ═══ ② ECAM PRESS ═══
+ const press = new THREE.Group(); press.position.set(0.55,0,0); machine.add(press);
+ press.add(box(0.32,0.04,ml*0.7,M.frameL,[0,-0.35,0]));
+ for(let z of[-0.15,0.15]){press.add(box(0.025,0.02,ml*0.6,M.alum,[0.08,-0.28,z]));press.add(box(0.025,0.02,ml*0.6,M.alum,[-0.08,-0.28,z]));}
+ press.add(cyl(0.022,0.022,0.7,32,M.alum,[0,-0.15,0],[Math.PI/2,0,0]));
+ 
+ const carriage = new THREE.Group(); carriage.position.set(0,-0.06,0); press.add(carriage);
+ carriage.add(box(0.28,0.03,0.65,M.steelD,[0,0.12,0]));
+ const puRoll = cyl(0.065,0.065,ml*0.55,48,M.orange,[0,0.07,0],[Math.PI/2,0,0]); carriage.add(puRoll);
+ 
+ // Servo motor
+ const servoGroup = new THREE.Group(); servoGroup.position.set(0,-0.48,ml*0.4); press.add(servoGroup);
+ servoGroup.add(box(0.14,0.18,0.2,M.servo,[0,0,0]));
+ servoGroup.add(cyl(0.09,0.09,0.04,32,M.steelD,[0,0.1,0],[Math.PI/2,0,0]));
+ 
+ // ═══ ③ ELASTIC PRESSURE BELT (弹性压力带) ═══
+ const beltGroup = new THREE.Group(); beltGroup.position.set(0.82,0,0.3); machine.add(beltGroup);
+ const beltFrame = box(0.25,0.03,ml*0.5,M.frameL,[0,-0.55,0]); beltGroup.add(beltFrame);
+ // Belt rollers
+ beltGroup.add(cyl(0.04,0.04,ml*0.5,32,M.guide,[0,0.15,0],[Math.PI/2,0,0]));
+ beltGroup.add(cyl(0.04,0.04,ml*0.5,32,M.guide,[0,-0.55,0],[Math.PI/2,0,0]));
+ // Belt surface
+ const beltGeo = new THREE.PlaneGeometry(0.6,ml*0.45);
+ const beltMesh = new THREE.Mesh(beltGeo,M.belt);
+ beltMesh.position.set(0,-0.2,0); beltMesh.rotation.y=Math.PI/2;
+ beltMesh.castShadow=true; beltGroup.add(beltMesh);
+ 
+ // ═══ ④ ADHESIVE APPLICATION (胶液涂布辊组) ═══
+ const glueGroup = new THREE.Group(); glueGroup.position.set(-0.25,0.5,-0.5); machine.add(glueGroup);
+ const glueTray = box(0.5,0.06,0.3,M.green,[0,-0.15,0]); glueGroup.add(glueTray);
+ glueTray.material = new THREE.MeshStandardMaterial({color:'#27ae60',roughness:0.25,metalness:0.15});
+ const glueRoll = cyl(0.05,0.05,0.4,32,M.green,[0,0.05,0],[Math.PI/2,0,0]); glueGroup.add(glueRoll);
+ const glueDoc = cyl(0.03,0.03,0.4,32,M.guide,[0.1,0.05,0],[Math.PI/2,0,0]); glueGroup.add(glueDoc);
+ // Glue reservoir (translucent effect)
+ const resGeo = new THREE.BoxGeometry(0.35,0.04,0.2);
+ const resMat = new THREE.MeshStandardMaterial({color:'#a8e6cf',roughness:0.2,metalness:0.05,transparent:true,opacity:0.6});
+ glueGroup.add(new THREE.Mesh(resGeo,resMat).translateY(-0.12));
+ 
+ // ═══ ⑤ MULTI-UNWIND (多路放卷集群) ═══
+ const unwindClusters = [
+   {pos:[-2.0,0.05,-0.4],color:0xc4a46c},
+   {pos:[-2.0,0.05,0.4],color:0xb8955a},
+ ];
+ unwindClusters.forEach(({pos,color})=>{
+   const ug = new THREE.Group(); ug.position.set(...pos); machine.add(ug);
+   const pm = new THREE.MeshStandardMaterial({color,roughness:0.75,metalness:0.02});
+   ug.add(cyl(0.28,0.28,0.7,48,pm,[0,0.15,0],[Math.PI/2,0,0]));
+   ug.add(cyl(0.05,0.05,0.8,32,M.frame,[0,0.15,0],[Math.PI/2,0,0]));
+   ug.add(box(0.06,0.3,0.06,M.frameL,[0,0.15,-0.4]));
+   ug.add(box(0.06,0.3,0.06,M.frameL,[0,0.15,0.4]));
+ });
+ 
+ // ═══ ⑥ DANCER ARMS (摆臂集群) ═══
+ [0.35,-0.35].forEach(z=>{
+   const tg = new THREE.Group(); tg.position.set(-0.55,0.35,z); machine.add(tg);
+   tg.add(box(0.05,0.07,0.08,M.frameL,[0,0,0]));
+   const armP = new THREE.Group(); armP.position.set(0,0,0); tg.add(armP);
+   for(let dz of[0.02,-0.02]){armP.add(box(0.02,0.45,0.015,M.carbon,[0,-0.23,dz]));}
+   armP.add(cyl(0.035,0.035,0.2,32,M.guide,[0,-0.46,0],[Math.PI/2,0,0]));
+   armP.rotation.z=-0.3;
+   const cg = new THREE.Group(); cg.position.set(0.12,0,0.06); tg.add(cg);
+   cg.add(cyl(0.025,0.025,0.2,24,M.cyl,[0,-0.12,0]));
+   cg.add(cyl(0.035,0.035,0.05,24,M.cyl,[0,0,0]));
+ });
+ 
+ // Guide rollers
+ [[-1.1,0.65,-0.2],[-0.9,0.65,0.2]].forEach(p=>machine.add(cyl(0.025,0.025,0.45,32,M.guide,p,[Math.PI/2,0,0])));
+ 
+ // ═══ ⑦ SYNCHRONOUS BELT DRIVE (同步皮带牵引) ═══
+ const syncGroup = new THREE.Group(); syncGroup.position.set(0,-0.95,0); machine.add(syncGroup);
+ const syncPulley1 = cyl(0.08,0.08,0.15,32,M.steelD,[-0.5,0,1.2],[Math.PI/2,0,0]); syncGroup.add(syncPulley1);
+ const syncPulley2 = cyl(0.08,0.08,0.15,32,M.steelD,[0.5,0,1.2],[Math.PI/2,0,0]); syncGroup.add(syncPulley2);
+ // Belt span
+ const syncBeltGeo = new THREE.BoxGeometry(1.0,0.01,0.12);
+ const syncBeltMat = new THREE.MeshStandardMaterial({color:'#888',roughness:0.6,metalness:0.1});
+ syncGroup.add(new THREE.Mesh(syncBeltGeo,syncBeltMat).translateY(0.08).translateZ(1.2));
+ 
+ // ═══ ⑧ CUTTING DEVICE (裁切断料) ═══
+ const cutterGroup = new THREE.Group(); cutterGroup.position.set(0.7,-0.65,-1.0); machine.add(cutterGroup);
+ cutterGroup.add(box(0.4,0.04,0.15,M.frameL,[0,-0.2,0]));
+ const bladeGeo = new THREE.BoxGeometry(0.35,0.005,0.02);
+ const blade = new THREE.Mesh(bladeGeo,M.cutter);
+ blade.position.set(0,-0.05,0); cutterGroup.add(blade);
+ cutterGroup.add(box(0.05,0.12,0.05,M.servo,[0,-0.05,0.1]));
+ 
+ // Paper web paths
+ const webGroup = new THREE.Group(); machine.add(webGroup);
+ function makeWeb(pts){
+   const c=new THREE.CatmullRomCurve3(pts.map(p=>new THREE.Vector3(...p)));
+   const g=new THREE.TubeGeometry(c,60,0.015,6,false);
+   const m=new THREE.Mesh(g,M.paperW); m.castShadow=true; return m;
+ }
+ // Web 1: upper unwind -> dancer -> mandrel
+ webGroup.add(makeWeb([[-2,0.42,-0.4],[-1.1,0.65,-0.2],[-0.55,0.05,-0.35],[-0.15,0.18,-0.2],[0,0.1,0]]));
+ // Web 2: lower unwind -> dancer -> mandrel
+ webGroup.add(makeWeb([[-2,0.42,0.4],[-0.9,0.65,0.2],[-0.55,0.05,0.35],[-0.15,0.18,0.2],[0,0.1,0]]));
+ // Glue web path
+ const gwGeo = new THREE.PlaneGeometry(0.5,0.4);
+ const gw = new THREE.Mesh(gwGeo,new THREE.MeshStandardMaterial({color:'#a8e6cf',roughness:0.6,metalness:0.01,side:THREE.DoubleSide,transparent:true,opacity:0.45}));
+ gw.position.set(-0.25,0.4,-0.5); gw.rotation.y=Math.PI/2; gw.rotation.z=-0.3;
+ webGroup.add(gw);
+ 
+ // Labels
+ const labelDefs=[
+   {t:'\u2460 \u56db\u89d2\u5fc3\u8f74',p:[0,0.75,0.6]},
+   {t:'\u2461 ECAM\u538b\u7d27',p:[1.1,0.4,0.7]},
+   {t:'\u2462 \u5f39\u6027\u538b\u529b\u5e26',p:[1.2,-0.15,0.7]},
+   {t:'\u2463 \u80f6\u6db2\u6d82\u5e03',p:[-0.25,0.9,-0.8]},
+   {t:'\u2464 \u591a\u8def\u653e\u5377',p:[-2.5,0.65,0.6]},
+   {t:'\u2465 \u6446\u81c2\u5f20\u529b',p:[-0.55,0.95,0.5]},
+   {t:'\u2466 \u540c\u6b65\u76ae\u5e26',p:[0,-0.85,1.5]},
+   {t:'\u2467 \u88c1\u5207\u88c5\u7f6e',p:[0.7,-0.4,-1.2]},
+ ];
+ const labelEls=[];
+ const lc=document.getElementById('labels');
+ labelDefs.forEach(d=>{
+   const e=document.createElement('div');e.className='label-3d';e.textContent=d.t;lc.appendChild(e);
+   labelEls.push({el:e,pos:new THREE.Vector3(...d.p)});
+ });
+ 
+ function updateLabels(){
+   const hw=innerWidth/2,hh=innerHeight/2;
+   labelEls.forEach(item=>{
+     const wp=item.pos.clone();machine.localToWorld(wp);
+     const sp=wp.clone().project(camera);
+     if(sp.z>1){item.el.style.opacity='0';return;}
+     item.el.style.opacity='1';
+     item.el.style.left=(sp.x*hw+hw)+'px';
+     item.el.style.top=(-sp.y*hh+hh)+'px';
+   });
+ }
+ 
+ // Animation
+ const clock=new THREE.Clock();
+ function animate(){
+   requestAnimationFrame(animate);
+   const t=clock.getElapsedTime();
+   mandrel.rotation.z+=0.01;
+   carriage.position.x=Math.abs(Math.sin(mandrel.rotation.z*4))*0.12;
+   beltGroup.position.x=0.78+Math.abs(Math.sin(mandrel.rotation.z*4+0.5))*0.08;
+   controls.update();updateLabels();
+   renderer.render(scene,camera);
+ }
+ animate();
+ 
+ window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+ window.addEventListener('keydown',e=>{
+   if(e.key==='r')controls.autoRotate=!controls.autoRotate;
+   if(e.key==='0'){camera.position.set(4.5,2.8,6.5);camera.lookAt(0,0.2,0);controls.target.set(0,0.2,0);controls.update();}
+   if(e.key==='1'){camera.position.set(3,0.5,0.1);camera.lookAt(0.6,0,0);controls.target.set(0.6,0,0);controls.update();}
+ });
+ </script>
+ </body>
+ </html>

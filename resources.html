@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>资料中心 - Mofort 摩垒 | 项目资料整合</title>
+  <meta name="description" content="Mofort 摩垒资料中心整合 SpaceKraft、ReadyFill、TriPak、JINXIN、FAL、SBH 等项目资料，包括产品手册、图纸、测试报告、操作视频、价格调研与 3D CAD。">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<script>if (sessionStorage.getItem("molei_auth_ok") !== "1") { location.replace("login.html"); }</script>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Mofort 摩垒首页">
+        <img class="brand-logo" src="assets/images/logo-mofort.svg" alt="MoFort 摩垒注册商标">
+        <span>
+          <span class="brand-name">Mofort 摩垒</span>
+          <span class="brand-sub">重载连续缠绕纸包装</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="products.html">产品中心</a>
+        <a href="cases.html">应用案例</a>
+        <a href="technology.html">核心技术</a>
+        <a href="resources.html" aria-current="page">资料中心</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+      <a class="btn btn--primary nav-cta" href="index.html#selector">选型工具</a>
+      <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" data-mobile-nav aria-label="移动导航">
+      <a href="index.html">首页</a>
+      <a href="products.html">产品中心</a>
+        <a href="cases.html">应用案例</a>
+      <a href="technology.html">核心技术</a>
+      <a href="resources.html">资料中心 🔒</a>
+      <a href="#contact">联系我们</a>
+      <a class="btn btn--primary" href="index.html#selector">选型工具</a>
+    </nav>
+  </header>
+
+  <main data-resource-page>
+    <section class="hero hero--resources">
+      <div class="hero-inner">
+        <h1>资料中心</h1>
+        <p>青岛腾珹包装自有资料统一入口：产品手册、标准产品规格书、测试报告、产品白皮书与实拍视频。</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#library">浏览全部资料</a>
+          <a class="btn btn--ghost-light" href="#videos">先看视频</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="library">
+      <div class="container">
+        <span class="eyebrow">Resource Library</span>
+        <h2 class="section-title">项目资料索引</h2>
+        <p class="section-lead">按类别和关键词检索。PDF、视频、图纸和网页均保留原始路径，可继续作为内部技术研究或外部客户资料使用。</p>
+
+        <div class="resource-toolbar">
+          <input class="resource-search" type="search" placeholder="搜索手册、视频、图纸、ISTA、SpaceKraft..." data-resource-search aria-label="搜索资料">
+          <div class="filter-group" data-resource-filters role="group" aria-label="资料分类"></div>
+        </div>
+        <div class="resource-count" data-resource-count></div>
+        <div class="resource-list" data-resource-list></div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="videos">
+      <div class="container">
+        <span class="eyebrow">Video Highlights</span>
+        <h2 class="section-title">重点操作与对比视频</h2>
+        <p class="section-lead">以下视频均为摩垒产品实拍素材：铺装演示、装车运输卸车实测与 4 层码垛测试。</p>
+        <div class="video-grid reveal">
+          <div class="video-card">
+            <video controls preload="metadata" src="assets/videos/铺装演示.mp4"></video>
+            <div class="video-card-body">
+              <h3>摩垒纸吨箱铺装演示</h3>
+              <p>自家产品铺装/组装实拍</p>
+            </div>
+          </div>
+          <div class="video-card">
+            <video controls preload="metadata" src="assets/videos/装车-运输-卸车实测.mp4"></video>
+            <div class="video-card-body">
+              <h3>装车-运输-卸车实测</h3>
+              <p>2025.10.30 实验：装车、运输、卸车全流程实测</p>
+            </div>
+          </div>
+          <div class="video-card">
+            <video controls preload="metadata" src="assets/videos/4层码垛测试.mp4"></video>
+            <div class="video-card-body">
+              <h3>4 层码垛测试</h3>
+              <p>自家产品静态/动态堆码实测</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="references">
+      <div class="container">
+        <span class="eyebrow">Reference Sites</span>
+        <h2 class="section-title">SpaceKraft 与同行参考网站</h2>
+        <p class="section-lead">保留调研时使用的原始站点，便于持续跟踪产品、案例、经销商和技术文档更新。</p>
+        <div class="source-grid reveal">
+          <div class="source-card">
+            <h3>SpaceKraft 官网</h3>
+            <p>国际纸业旗下 Paper IBC 与 ReadyFill 官方产品页。</p>
+            <a href="http://www.gospacekraft.com/" target="_blank" rel="noopener">
+              访问
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+            </a>
+          </div>
+          <div class="source-card">
+            <h3>International Paper</h3>
+            <p>SpaceKraft 液体散装与 ReadyFill 技术页面。</p>
+            <a href="https://www.internationalpaper.com/packaging/bulk/spacekraft" target="_blank" rel="noopener">
+              访问
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+            </a>
+          </div>
+          <div class="source-card">
+            <h3>ReadyFill</h3>
+            <p>预组装 Paper IBC 方案，适用于高吞吐灌装。</p>
+            <a href="http://www.readyfill.com/" target="_blank" rel="noopener">
+              访问
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+            </a>
+          </div>
+          <div class="source-card">
+            <h3>SpaceKraft New Zealand</h3>
+            <p>案例与 multi-trip 应用参考。</p>
+            <a href="http://www.spacekraft.co.nz/case.php" target="_blank" rel="noopener">
+              访问
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+            </a>
+          </div>
+          <div class="source-card">
+            <h3>Paper Systems</h3>
+            <p>液体散装运输 IBC 参考。</p>
+            <a href="https://paper-systems.com/" target="_blank" rel="noopener">
+              访问
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+            </a>
+          </div>
+          <div class="source-card">
+            <h3>Tri-Wall Indonesia</h3>
+            <p>重型瓦楞与 Paper IBC 同行参考。</p>
+            <a href="https://tri-wallindonesia.co.id/paper-ibc/" target="_blank" rel="noopener">
+              访问
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ink" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h2>需要未公开的技术细节？</h2>
+            <p>资料中心保留项目原始文件。若需要特定箱体图纸、SolidWorks 模型、集装箱排柜 CAD 或客户报价口径，可联系工程团队索取。</p>
+            <ul class="contact-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM4 6l8 6 8-6"/></svg>
+                <a href="mailto:tengchengibc@gmail.com" style="color:inherit;text-decoration:none">tengchengibc@gmail.com</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11zM10 10a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/></svg>
+                <span>中国制造基地</span>
+              </li>
+            </ul>
+          </div>
+          <form class="contact-form" data-contact-form>
+            <div class="field">
+              <label for="contact-company">姓名 / 公司名称</label>
+              <input id="contact-company" type="text" placeholder="请输入姓名或公司">
+            </div>
+            <div class="field">
+              <label for="contact-email">联系邮箱</label>
+              <input id="contact-email" type="email" placeholder="your@company.com">
+            </div>
+            <div class="field">
+              <label for="contact-product">关注资料</label>
+              <select id="contact-product">
+                <option>产品手册</option>
+                <option>箱体图纸</option>
+                <option>测试报告</option>
+                <option>操作视频</option>
+                <option>3D / CAD 模型</option>
+                <option>全部资料</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contact-message">需求描述</label>
+              <textarea id="contact-message" placeholder="请说明需要哪类资料或用于什么场景"></textarea>
+            </div>
+            <button class="btn btn--primary" type="submit" style="width:100%">发送咨询</button>
+            <div class="field-hint" data-contact-status aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img class="brand-logo footer-logo" src="assets/images/logo-mofort.svg" alt="MoFort 摩垒注册商标">
+          <div class="footer-brand">Mofort 摩垒</div>
+          <p>重载连续缠绕纸包装解决方案。产品结构设计、测试方法与技术资料对标 SpaceKraft、ReadyFill 等国际一线 Paper IBC 品牌。</p>
+        </div>
+        <div>
+          <h4>产品</h4>
+          <a href="products.html#ibc">1000L Paper IBC</a>
+          <a href="products.html#box">1410×1060 重型纸箱</a>
+          <a href="products.html#accessories">内衬与加热系统</a>
+        </div>
+        <div>
+          <h4>技术</h4>
+          <a href="technology.html#process">连续缠绕成型</a>
+          <a href="technology.html#materials">原纸体系</a>
+          
+        </div>
+        <div>
+          <h4>资源</h4>
+          <a href="#library">项目资料索引</a>
+          <a href="#videos">重点视频</a>
+          <a href="#references">参考网站</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Mofort 摩垒重型包装. All rights reserved.</span>
+        <span class="source-note">资料整理来源：gospacekraft.com · internationalpaper.com · readyfill.com · 项目竞品资料库</span>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/resources-data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
