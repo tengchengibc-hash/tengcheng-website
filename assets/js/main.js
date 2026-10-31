@@ -68,10 +68,10 @@
     const stackOutput = $("[data-stack-output]", selectForm);
 
     const specs = {
-      "IBC-6S": { note: "标准通用型，适合轻中比重液体与 1+1 堆码。", bct: "17.2t", stack: "1+1" },
-      "IBC-6P": { note: "旗舰重载型，梯度湿压内纸，适合 1.2~1.4 比重液体。", bct: "20.2t", stack: "1+2" },
-      "IBC-7S": { note: "中重载型，7 层 36mm 壁厚，梯度湿压内纸，适合高比重液体与非液散货。", bct: "23.5t", stack: "1+1" },
-      "IBC-8MAX": { note: "极限特重型，8 层 90# 美卡结构，适合高比重、高堆码。", bct: "26.5t", stack: "1+3" },
+      "IBC-6S": { note: "标准通用型，适合轻中比重液体与 1+1 堆码。", bct: "详询", stack: "1+1" },
+      "IBC-6P": { note: "旗舰重载型，梯度湿压内纸，适合 1.2~1.4 比重液体。", bct: "详询", stack: "1+2" },
+      "IBC-7S": { note: "中重载型，7 层 36mm 壁厚，梯度湿压内纸，适合高比重液体与非液散货。", bct: "详询", stack: "1+1" },
+      "IBC-8MAX": { note: "极限特重型，8 层 90# 美卡结构，适合高比重、高堆码。", bct: "详询", stack: "1+3" },
     };
 
     const update = () => {
