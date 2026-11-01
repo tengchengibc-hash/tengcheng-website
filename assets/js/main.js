@@ -101,30 +101,55 @@
     update();
   }
 
+  /*
+   * 资料中心
+   * 说明：
+   *  1) size 字段统一存「字节数」，由 humanSize() 换算成 KB/MB；
+   *  2) 链接前缀按页面所在目录动态计算，中文站用 "assets/…"，英文站（en/）用 "../assets/…"；
+   *  3) 界面文案按 <html lang> 自动切换中英文；
+   *  4) 计数、搜索框、筛选容器均可缺省，缺失时对应功能静默跳过，不抛异常。
+   */
   const resourcePage = $("[data-resource-page]");
   if (resourcePage && window.RESOURCES) {
+    const ALL_CATEGORY = "__ALL__";
+    const isEn = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
+    const T = isEn
+      ? { all: "All", items: "items", open: "Open", empty: "No matching resources. Try another keyword or category.",
+          video: "Video", pdf: "PDF", image: "Image", doc: "Document", web: "Web", file: "File",
+          meta: (r) => [r.note || "", r.category || ""].filter(Boolean).join(" · ") }
+      : { all: "全部", items: "项资料", open: "打开", empty: "没有匹配的资料，请调整关键词或分类。",
+          video: "视频", pdf: "PDF", image: "图片", doc: "文档", web: "网页", file: "文件",
+          meta: (r) => `${r.note || ""}${r.source ? ` · ${r.source}` : ""}` };
+
     const list = $("[data-resource-list]", resourcePage);
     const countEl = $("[data-resource-count]", resourcePage);
     const searchInput = $("[data-resource-search]", resourcePage);
     const filterWrap = $("[data-resource-filters]", resourcePage);
-    let activeCategory = "全部";
+    let activeCategory = ALL_CATEGORY;
+
+    // 站点根相对前缀：中文页（html 在站点根）为 ""，英文页（html 在 en/）为 "../"
+    const depth = document.querySelectorAll('script[src$="main.js"]')[0];
+    let relPrefix = "";
+    if (depth && depth.getAttribute("src")) {
+      relPrefix = depth.getAttribute("src").replace(/assets\/js\/main\.js$/, "");
+    }
 
     const typeOf = (resource) => {
       const ext = resource.path.split(".").pop().toLowerCase();
-      if (["mp4", "webm", "mov", "avi"].includes(ext)) return "视频";
-      if (["pdf"].includes(ext)) return "PDF";
-      if (["png", "jpg", "jpeg", "gif", "webp"].includes(ext)) return "图片";
-      if (["doc", "docx", "xls", "xlsx", "ppt", "pptx"].includes(ext)) return "文档";
-      if (["sldprt", "sldasm", "stp", "step", "dwg", "dxf"].includes(ext)) return "CAD";
-      if (["html", "htm"].includes(ext)) return "网页";
-      return "文件";
+      if (["mp4", "webm", "mov", "avi"].includes(ext)) return T.video;
+      if (["pdf"].includes(ext)) return T.pdf;
+      if (["png", "jpg", "jpeg", "gif", "webp"].includes(ext)) return T.image;
+      if (["doc", "docx", "xls", "xlsx", "ppt", "pptx"].includes(ext)) return T.doc;
+      if (["html", "htm"].includes(ext)) return T.web;
+      return T.file;
     };
 
+    // 输入为字节数；留空返回空串
     const humanSize = (bytes) => {
       if (!bytes) return "";
       const units = ["B", "KB", "MB", "GB"];
       let index = 0;
-      let value = bytes;
+      let value = Number(bytes);
       while (value >= 1024 && index < units.length - 1) {
         value /= 1024;
         index += 1;
@@ -133,7 +158,7 @@
     };
 
     const resourceHref = (path) => {
-      return `../${path.split("/").map((part) => encodeURIComponent(part)).join("/")}`;
+      return `${relPrefix}${path.split("/").map((part) => encodeURIComponent(part)).join("/")}`;
     };
 
     const categories = [...new Set(window.RESOURCES.map((item) => item.category))].sort();
@@ -142,41 +167,46 @@
       activeCategory = categoryParam;
     }
     const chips = [
-      { label: "全部", value: "全部" },
+      { label: T.all, value: ALL_CATEGORY },
       ...categories.map((category) => ({ label: category, value: category })),
     ];
 
-    chips.forEach((chip) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "filter-chip";
-      button.textContent = chip.label;
-      button.dataset.category = chip.value;
-      button.setAttribute("aria-pressed", String(chip.value === activeCategory));
-      button.addEventListener("click", () => {
-        activeCategory = chip.value;
-        $$(".filter-chip", filterWrap).forEach((el) => {
-          el.setAttribute("aria-pressed", String(el.dataset.category === activeCategory));
+    if (filterWrap) {
+      chips.forEach((chip) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "filter-chip";
+        button.textContent = chip.label;
+        button.dataset.category = chip.value;
+        button.setAttribute("aria-pressed", String(chip.value === activeCategory));
+        button.addEventListener("click", () => {
+          activeCategory = chip.value;
+          $$(".filter-chip", filterWrap).forEach((el) => {
+            el.setAttribute("aria-pressed", String(el.dataset.category === activeCategory));
+          });
+          render();
         });
-        render();
+        filterWrap.appendChild(button);
       });
-      filterWrap.appendChild(button);
-    });
+    }
 
-    const render = () => {
-      const query = (searchInput.value || "").trim().toLowerCase();
+    function render() {
+      if (!list) return;
+      const query = searchInput ? (searchInput.value || "").trim().toLowerCase() : "";
       const rows = window.RESOURCES.filter((resource) => {
-        const categoryMatch = activeCategory === "全部" || resource.category === activeCategory;
+        const categoryMatch = activeCategory === ALL_CATEGORY || resource.category === activeCategory;
         const haystack = `${resource.name} ${resource.note || ""} ${resource.source || ""} ${resource.path}`.toLowerCase();
         return categoryMatch && (!query || haystack.includes(query));
       });
-      countEl.textContent = `共 ${rows.length} 项资料`;
+      if (countEl) {
+        countEl.textContent = isEn ? `${rows.length} ${T.items}` : `共 ${rows.length} ${T.items}`;
+      }
       list.innerHTML = "";
 
       if (!rows.length) {
         const empty = document.createElement("div");
         empty.className = "resource-empty";
-        empty.textContent = "没有匹配的资料，请调整关键词或分类。";
+        empty.textContent = T.empty;
         list.appendChild(empty);
         return;
       }
@@ -188,20 +218,20 @@
         row.innerHTML = `
           <div>
             <a href="${resourceHref(resource.path)}" target="_blank" rel="noopener">${resource.name}</a>
-            <div class="resource-meta">${resource.note || ""}${resource.source ? ` · ${resource.source}` : ""}</div>
+            <div class="resource-meta">${T.meta(resource)}</div>
           </div>
-          <div class="resource-meta">${resource.category || "其他"}</div>
-          <div><span class="resource-type resource-type--${type === "视频" ? "video" : type === "PDF" ? "pdf" : type === "图片" ? "image" : "file"}">${type}</span></div>
+          <div class="resource-meta">${resource.category || (isEn ? "Other" : "其他")}</div>
+          <div><span class="resource-type resource-type--${type === T.video ? "video" : type === T.pdf ? "pdf" : type === T.image ? "image" : "file"}">${type}</span></div>
           <div class="resource-row-actions">
             <span class="resource-meta">${humanSize(resource.size)}</span>
-            <a href="${resourceHref(resource.path)}" target="_blank" rel="noopener">打开</a>
+            <a href="${resourceHref(resource.path)}" target="_blank" rel="noopener">${T.open}</a>
           </div>
         `;
         list.appendChild(row);
       });
-    };
+    }
 
-    searchInput.addEventListener("input", render);
+    if (searchInput) searchInput.addEventListener("input", render);
     render();
   }
 

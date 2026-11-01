@@ -54,8 +54,17 @@
 <section class="section section--paper" data-resource-page>
   <div class="container">
     <p class="section-lead">All own materials, classified. Filter by category or search below.</p>
-    <div class="filter-group" data-resource-filters role="group" aria-label="Resource categories"></div>
+    <div class="resource-toolbar">
+      <input class="resource-search" type="search" placeholder="Search catalogs, spec sheets, ISTA, whitepaper..." data-resource-search aria-label="Search resources">
+      <div class="filter-group" data-resource-filters role="group" aria-label="Resource categories"></div>
+    </div>
+    <div class="resource-count" data-resource-count></div>
     <div class="resource-list" data-resource-list></div>
+
+    <div class="source-card" style="margin-top:24px">
+      <h3>Certifications &amp; test reports (on request)</h3>
+      <p>BRCGS, FSSC 22000, HALAL, Kosher, ISO 9001 / 14001 / 45001, and liner migration / BPA / nonylphenol / melamine / heavy metals / mineral oil (MOAH &amp; MOSH) / microbiological test reports are not available for public download on this page. Please contact us and we will send the relevant files by email after confirming the intended use.</p>
+    </div>
   </div>
 </section>
 </main>
@@ -93,6 +102,7 @@
     </div>
   </div>
 </footer>
+<script src="assets/js/resources-data.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>
