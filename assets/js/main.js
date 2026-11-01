@@ -68,28 +68,30 @@
     const stackOutput = $("[data-stack-output]", selectForm);
 
     const specs = {
-      "IBC-6S": { note: "标准通用型，适合轻中比重液体与 1+1 堆码。", bct: "详询", stack: "1+1" },
-      "IBC-6P": { note: "旗舰重载型，梯度湿压内纸，适合 1.2~1.4 比重液体。", bct: "详询", stack: "1+2" },
-      "IBC-7S": { note: "中重载型，7 层 36mm 壁厚，梯度湿压内纸，适合高比重液体与非液散货。", bct: "详询", stack: "1+1" },
-      "IBC-8MAX": { note: "极限特重型，8 层 90# 美卡结构，适合高比重、高堆码。", bct: "详询", stack: "1+3" },
+      "IBC-7P": { note: "标准型，7 层 36mm 壁厚，适合比重 ≤1.0 的液体与散货。", bct: "详询" },
+      "IBC-8P": { note: "重载型，8 层 41mm 壁厚，适合比重 1.0~1.2 的液体。", bct: "详询" },
+      "IBC-9P": { note: "特重型，9 层 46mm 壁厚，适合比重 1.2~1.4 的液体。", bct: "详询" },
     };
 
     const update = () => {
       const density = Number(densityInput.value) || 1;
       const volume = Number(volumeInput.value) || 1000;
       const stack = Number(stackInput.value) || 1;
-      let model = "IBC-8MAX";
-      if (density <= 1.1 && stack <= 2) model = "IBC-6S";
-      else if (density <= 1.4 && stack <= 3) model = "IBC-6P";
-      else if (density <= 1.45 && stack <= 2) model = "IBC-7S";
+      // 按推荐液体比重区间选型（用户 2026-11-01 确认的 3 型号体系）
+      let model = "IBC-9P";
+      if (density <= 1.0) model = "IBC-7P";
+      else if (density <= 1.2) model = "IBC-8P";
+      const overDensity = density > 1.4;
       const spec = specs[model];
       const gross = Math.round(volume * density + 60);
       const total = exportInput.checked ? 20000 : gross * stack;
-      modelEl.textContent = model;
-      modelNoteEl.textContent = spec.note;
+      modelEl.textContent = overDensity ? "超出选型范围" : model;
+      modelNoteEl.textContent = overDensity
+        ? "比重超过 1.4 g/cm³，请直接联系工程团队核定。"
+        : spec.note;
       weightEl.textContent = `${gross.toLocaleString()} kg`;
       loadEl.textContent = spec.bct;
-      stackEl.textContent = stack > 4 ? "超限" : `${1}+${Math.min(stack, 3)}`;
+      stackEl.textContent = "详询";
       if (stackOutput) stackOutput.textContent = `${stack} 层`;
     };
 
