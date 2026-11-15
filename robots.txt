@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tengchengibc-hash.github.io/tengcheng-website/sitemap.xml
