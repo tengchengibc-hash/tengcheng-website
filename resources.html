@@ -1,140 +1,197 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>资料中心 | MoFort 摩垒</title>
-<meta name="description" content="MoFort 资料中心：产品手册、标准规格书、ISTA 3E 运输测试报告、专利文本与产品视频；认证与检测资料按需提供。">
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>资料中心 - MoFort 摩垒 | 产品资料与测试报告</title>
+  <meta name="description" content="MoFort 摩垒资料中心：产品手册、标准产品规格书、ISTA 3E 运输测试报告、专利文本与产品实拍视频。">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
-<header class="site-header">
-  <div class="container">
-    <a class="brand" href="index.html" aria-label="MoFort 首页">
-      <img class="brand-logo" src="assets/images/logo-mofort.svg" alt="MoFort Logo">
-      <span>
-        <span class="brand-name">MoFort</span>
-        <span class="brand-sub">连续缠绕纸包装</span>
-      </span>
-    </a>
-    <nav class="main-nav" aria-label="主导航">
-      <a href="index.html" aria-current="page">首页</a>
-      <a href="products.html">产品</a>
-      <a href="cases.html">应用案例</a>
-      <a href="technology.html">技术与专利</a>
-      <a href="resources.html">资料中心</a>
-      <a href="contact.html">联系</a>
-    </nav>
-    <a class="btn btn--ghost nav-cta" href="en/index.html">EN</a>
-    <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="打开导航">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-  </div>
-  <nav class="mobile-nav" data-mobile-nav aria-label="移动端导航">
-    <a href="index.html">首页</a>
-    <a href="products.html">产品</a>
-    <a href="cases.html">应用案例</a>
-    <a href="technology.html">技术与专利</a>
-    <a href="resources.html">资料中心</a>
-    <a href="contact.html">联系</a>
-    <a class="btn btn--primary" href="en/index.html">EN</a>
-  </nav>
-</header>
-<main>
-
-<section class="hero hero--resources">
-  <div class="hero-inner">
-    <h1>资料中心</h1>
-    <p>青岛腾珹包装自有资料，按类别整理：产品手册、标准规格书、ISTA 3E 运输测试报告、专利文本与产品视频。认证与检测资料按需提供。</p>
-  </div>
-</section>
-
-<section class="section section--paper" data-resource-page>
-  <div class="container">
-    <p class="section-lead">全部为自有资料，已分类。可按类别筛选或在下方搜索。</p>
-    <div class="resource-toolbar">
-      <input class="resource-search" type="search" placeholder="搜索手册、规格书、测试报告、专利、视频……" data-resource-search aria-label="搜索资料">
-      <div class="filter-group" data-resource-filters role="group" aria-label="资料类别"></div>
-    </div>
-    <div class="resource-count" data-resource-count></div>
-    <div class="resource-list" data-resource-list></div>
-
-    <div class="source-card" style="margin-top:24px">
-      <h3>认证与检测资料（按需提供）</h3>
-      <p>相关内衬材料合规资料可按需提供；公司体系认证以实际取得的证书为准。如需要某类检测项或认证文件，请通过联系表单说明用途，我们核实后以邮件发送相关文件。</p>
-    </div>
-  </div>
-</section>
-
-<section class="section section--ink" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div>
-        <span class="eyebrow">联系</span>
-        <h2>需要未公开的技术细节？</h2>
-        <p>具体箱体图纸、选型计算书或认证资料可按需提供。</p>
-        <ul class="contact-list">
-          <li><a href="mailto:zhouhai_lu@126.com" style="color:inherit;text-decoration:none">zhouhai_lu@126.com</a></li>
-          <li><span>业务联系人：周海鲁（Mr. Hailu Zhou）· 15269738384</span></li>
-          <li><span>WhatsApp：15153203256</span></li>
-        </ul>
-      </div>
-      <form class="contact-form" data-contact-form>
-        <div class="field"><label for="contact-company">姓名 / 公司</label><input id="contact-company" type="text" placeholder="您的姓名或公司名称"></div>
-        <div class="field"><label for="contact-email">工作邮箱</label><input id="contact-email" type="email" placeholder="您的工作邮箱"></div>
-        <div class="field"><label for="contact-product">资料意向</label>
-          <select id="contact-product">
-            <option>产品手册</option>
-            <option>规格书</option>
-            <option>运输测试报告</option>
-            <option>图纸 / 选型计算书</option>
-            <option>认证与检测资料</option>
-            <option>全部资料</option>
-          </select>
-        </div>
-        <div class="field"><label for="contact-message">留言</label><textarea id="contact-message" placeholder="需要哪份资料、用于什么场景……"></textarea></div>
-        <button class="btn btn--primary" type="submit" style="width:100%">发送咨询</button>
-        <div class="field-hint" data-contact-status aria-live="polite"></div>
-      </form>
-    </div>
-  </div>
-</section>
-</main>
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <img class="brand-logo footer-logo" src="assets/images/logo-mofort.svg" alt="MoFort Logo">
-        <div class="footer-brand">MoFort</div>
-        <p>青岛腾珹包装有限公司出品的连续缠绕纸吨箱与重型瓦楞包装。</p>
-      </div>
-      <div>
-        <h4>产品</h4>
-        <a href="products.html#ibc">1000L 纸吨箱</a>
-        <a href="products.html#box">1410×1060 重型纸箱</a>
-        <a href="products.html#options">内衬与配件</a>
-      </div>
-      <div>
-        <h4>公司</h4>
-        <a href="technology.html">技术与专利</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="MoFort 摩垒首页">
+        <img class="brand-logo" src="assets/images/logo-mofort.svg" alt="MoFort 摩垒 Logo">
+        <span>
+          <span class="brand-name">MoFort 摩垒</span>
+          <span class="brand-sub">重载连续缠绕纸包装</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="products.html">产品中心</a>
         <a href="cases.html">应用案例</a>
-        <a href="contact.html">联系</a>
+        <a href="technology.html">核心技术</a>
+        <a href="resources.html" aria-current="page">资料中心</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+      <a class="btn btn--primary nav-cta" href="index.html#selector">选型工具</a>
+      <a class="btn btn--ghost nav-cta" href="en/index.html" style="text-decoration:none">EN</a>
+      <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="打开导航">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" data-mobile-nav aria-label="移动导航">
+      <a href="index.html">首页</a>
+      <a href="products.html">产品中心</a>
+        <a href="cases.html">应用案例</a>
+      <a href="technology.html">核心技术</a>
+      <a href="resources.html">资料中心</a>
+      <a href="#contact">联系我们</a>
+      <a class="btn btn--primary" href="index.html#selector">选型工具</a>
+    </nav>
+  </header>
+
+  <main data-resource-page>
+    <section class="hero hero--resources">
+      <div class="hero-inner">
+        <h1>资料中心</h1>
+        <p>青岛腾珹包装公开资料入口：产品手册、标准产品规格书、ISTA 3E 运输测试报告、专利文本与实拍视频。体系认证与检测报告类文件按需提供，请通过下方表单索取。</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#library">浏览全部资料</a>
+          <a class="btn btn--ghost-light" href="#videos">先看视频</a>
+        </div>
       </div>
-      <div>
-        <h4>联系</h4>
-        <p>周海鲁（Mr. Hailu Zhou）</p>
-        <a href="tel:15269738384">15269738384</a>
-        <a href="mailto:zhouhai_lu@126.com">zhouhai_lu@126.com</a>
+    </section>
+
+    <section class="section" id="library">
+      <div class="container">
+        <span class="eyebrow">Resource Library</span>
+        <h2 class="section-title">产品资料索引</h2>
+        <p class="section-lead">按类别和关键词检索。PDF、视频与图纸保留原始路径；标注推算的指标以正式检测报告和规格书为准。</p>
+
+        <div class="resource-toolbar">
+          <input class="resource-search" type="search" placeholder="搜索手册、规格书、测试报告、专利、视频..." data-resource-search aria-label="搜索资料">
+          <div class="filter-group" data-resource-filters role="group" aria-label="资料分类"></div>
+        </div>
+        <div class="resource-count" data-resource-count></div>
+        <div class="resource-list" data-resource-list></div>
+
+        <div class="source-card" style="margin-top:24px">
+          <h3>认证与检测资料（按需索取）</h3>
+          <p>内衬材料相关合规资料可按需提供；公司体系认证以实际取得的证书为准。如需特定检测项目或认证文件，请通过下方表单提交用途，我们核实后以邮件发送。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="videos">
+      <div class="container">
+        <span class="eyebrow">Video Highlights</span>
+        <h2 class="section-title">重点操作与测试视频</h2>
+        <p class="section-lead">以下为 MoFort 产品实拍素材：铺装演示、装车运输卸车实测与 4 层码垛测试。</p>
+        <div class="video-grid reveal">
+          <div class="video-card">
+            <video controls preload="metadata" src="assets/videos/铺装演示.mp4"></video>
+            <div class="video-card-body">
+              <h3>MoFort 纸吨箱铺装演示</h3>
+              <p>产品铺装 / 组装实拍</p>
+            </div>
+          </div>
+          <div class="video-card">
+            <video controls preload="metadata" src="assets/videos/装车-运输-卸车实测.mp4"></video>
+            <div class="video-card-body">
+              <h3>装车-运输-卸车实测</h3>
+              <p>装车、运输、卸车全流程实测</p>
+            </div>
+          </div>
+          <div class="video-card">
+            <video controls preload="metadata" src="assets/videos/4层码垛测试.mp4"></video>
+            <div class="video-card-body">
+              <h3>4 层码垛测试</h3>
+              <p>产品静态 / 动态堆码实测</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ink" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow">Contact</span>
+            <h2>需要未公开的技术细节？</h2>
+            <p>若需要特定箱体图纸、选型计算书或认证检测资料，可联系工程团队索取。</p>
+            <ul class="contact-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM4 6l8 6 8-6"/></svg>
+                <a href="mailto:zhouhai_lu@126.com" style="color:inherit;text-decoration:none">zhouhai_lu@126.com</a>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11zM10 10a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/></svg>
+                <span>联系人：周海鲁（Mr. Hailu Zhou） · 15269738384</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                <span>WhatsApp：15153203256</span>
+              </li>
+            </ul>
+          </div>
+          <form class="contact-form" data-contact-form>
+            <div class="field">
+              <label for="contact-company">姓名 / 公司名称</label>
+              <input id="contact-company" type="text" placeholder="请输入姓名或公司">
+            </div>
+            <div class="field">
+              <label for="contact-email">联系邮箱</label>
+              <input id="contact-email" type="email" placeholder="请输入联系邮箱">
+            </div>
+            <div class="field">
+              <label for="contact-product">关注资料</label>
+              <select id="contact-product">
+                <option>产品手册</option>
+                <option>产品规格书</option>
+                <option>运输测试报告</option>
+                <option>箱体图纸 / 选型计算书</option>
+                <option>认证与检测资料</option>
+                <option>操作视频</option>
+                <option>全部资料</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contact-message">需求描述</label>
+              <textarea id="contact-message" placeholder="请说明需要哪类资料或用于什么场景"></textarea>
+            </div>
+            <button class="btn btn--primary" type="submit" style="width:100%">发送咨询</button>
+            <div class="field-hint" data-contact-status aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img class="brand-logo footer-logo" src="assets/images/logo-mofort.svg" alt="MoFort 摩垒 Logo">
+          <div class="footer-brand">MoFort 摩垒</div>
+          <p>重载连续缠绕纸包装解决方案，由青岛腾珹包装有限公司运营。</p>
+        </div>
+        <div>
+          <h4>产品</h4>
+          <a href="products.html#ibc">1000L Paper IBC</a>
+          <a href="products.html#box1410">1410×1060 重型纸箱</a>
+          <a href="products.html#accessories">内衬与配套系统</a>
+        </div>
+        <div>
+          <h4>技术</h4>
+          <a href="technology.html#process">连续缠绕成型</a>
+          <a href="technology.html#materials">原纸体系</a>
+        </div>
+        <div>
+          <h4>资源</h4>
+          <a href="#library">产品资料索引</a>
+          <a href="#videos">重点视频</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> MoFort 摩垒重型包装. All rights reserved.</span>
+        <span class="source-note">运输测试对标 ISTA 3E，报告编号 2026-Y009-211</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> 青岛腾珹包装有限公司（MoFort）版权所有。</span>
-      <span class="source-note">运输测试对标 ISTA 3E，报告号 2026-Y009-211</span>
-    </div>
-  </div>
-</footer>
-<script src="assets/js/resources-data.js"></script>
-<script src="assets/js/main.js"></script>
+  </footer>
+  <script src="assets/js/resources-data.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
