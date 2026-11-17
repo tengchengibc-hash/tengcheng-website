@@ -7,13 +7,6 @@ window.RESOURCES = [
     "note": "MoFort 纸吨箱与重型纸箱全系列产品手册（整合版 V1.0，2026-08）；标注推算的指标以正式检测报告为准"
   },
   {
-    "name": "摩垒 IBC 折叠纸吨箱-产品册.pdf",
-    "path": "assets/docs/摩垒 IBC 折叠纸吨箱-产品册.pdf",
-    "category": "产品手册",
-    "size": 3318696,
-    "note": "产品宣传册"
-  },
-  {
     "name": "MoFort-创新型散装容器解决方案.pdf",
     "path": "assets/docs/MoFort-创新型散装容器解决方案.pdf",
     "category": "产品手册",
@@ -47,20 +40,6 @@ window.RESOURCES = [
     "category": "测试报告",
     "size": 1917068,
     "note": "中包检测（无锡）· Report No. 2026-Y009-211 · ISTA 3E · English version"
-  },
-  {
-    "name": "2026-Y009-211-ISTA3E检测表.pdf",
-    "path": "assets/docs/2026-Y009-211-ISTA3E检测表.pdf",
-    "category": "测试报告",
-    "size": 1184152,
-    "note": "ISTA 3E 检测表（英文表单）"
-  },
-  {
-    "name": "MoFort-产品安全白皮书.docx",
-    "path": "assets/docs/MoFort-产品安全白皮书.docx",
-    "category": "产品白皮书",
-    "size": 26215,
-    "note": "产品安全与技术体系白皮书"
   },
   {
     "name": "铺装演示.mp4",
