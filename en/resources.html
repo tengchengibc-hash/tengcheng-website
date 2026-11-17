@@ -3,19 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Resources | Mofort</title>
-<meta name="description" content="Authorized resources center - catalogs, spec sheets, test reports.">
+<title>Resources | MoFort</title>
+<meta name="description" content="MoFort resource center: product catalogs, standard spec sheets, ISTA 3E test reports, patent text and product videos.">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-<script>if (sessionStorage.getItem("molei_auth_ok") !== "1") { location.replace("login.html"); }</script>
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="index.html" aria-label="Mofort home">
-      <img class="brand-logo" src="../assets/images/logo-mofort.svg" alt="MoFort registered trademark">
+    <a class="brand" href="index.html" aria-label="MoFort home">
+      <img class="brand-logo" src="../assets/images/logo-mofort.svg" alt="MoFort Logo">
       <span>
-        <span class="brand-name">Mofort</span>
+        <span class="brand-name">MoFort</span>
         <span class="brand-sub">Continuous-Wrap Paper Packaging</span>
       </span>
     </a>
@@ -24,10 +23,10 @@
       <a href="products.html">Products</a>
       <a href="cases.html">Applications</a>
       <a href="technology.html">Technology</a>
-      <a href="resources.html">Resources &#128274;</a>
+      <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <a class="btn btn--ghost nav-cta" href="../index.html">&#20013;&#25991;</a>
+    <a class="btn btn--ghost nav-cta" href="../index.html">中文</a>
     <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Open navigation">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -39,7 +38,7 @@
     <a href="technology.html">Technology</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html">Contact</a>
-    <a class="btn btn--primary" href="../index.html">&#20013;&#25991;</a>
+    <a class="btn btn--primary" href="../index.html">中文</a>
   </nav>
 </header>
 <main>
@@ -47,7 +46,7 @@
 <section class="hero hero--resources">
   <div class="hero-inner">
     <h1>Resources Center</h1>
-    <p>Authorized access area. Product catalogs, standard spec sheets, ISTA 3E test reports, whitepaper and videos &mdash; all own materials from Qingdao Tengcheng Packaging.</p>
+    <p>Public materials from Qingdao Tengcheng Packaging: product catalogs, standard spec sheets, ISTA 3E test reports, patent text and product videos. Certification and test documents are provided on request.</p>
   </div>
 </section>
 
@@ -55,15 +54,49 @@
   <div class="container">
     <p class="section-lead">All own materials, classified. Filter by category or search below.</p>
     <div class="resource-toolbar">
-      <input class="resource-search" type="search" placeholder="Search catalogs, spec sheets, ISTA, whitepaper..." data-resource-search aria-label="Search resources">
+      <input class="resource-search" type="search" placeholder="Search catalogs, spec sheets, test reports, patent, videos..." data-resource-search aria-label="Search resources">
       <div class="filter-group" data-resource-filters role="group" aria-label="Resource categories"></div>
     </div>
     <div class="resource-count" data-resource-count></div>
     <div class="resource-list" data-resource-list></div>
 
     <div class="source-card" style="margin-top:24px">
-      <h3>Certifications &amp; test reports (on request)</h3>
-      <p>BRCGS, FSSC 22000, HALAL, Kosher, ISO 9001 / 14001 / 45001, and liner migration / BPA / nonylphenol / melamine / heavy metals / mineral oil (MOAH &amp; MOSH) / microbiological test reports are not available for public download on this page. Please contact us and we will send the relevant files by email after confirming the intended use.</p>
+      <h3>Certification & test documents (on request)</h3>
+      <p>Relevant liner-material compliance documents can be provided on request; company system certifications follow the certificates actually held. If you need a specific test item or certification document, submit your intended use through the contact form and we will send the relevant files by email after review.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Need unpublished technical details?</h2>
+        <p>Specific box drawings, sizing calculation sheets or certification documents are available on request.</p>
+        <ul class="contact-list">
+          <li><a href="mailto:zhouhai_lu@126.com" style="color:inherit;text-decoration:none">zhouhai_lu@126.com</a></li>
+          <li><span>Contact: Zhou Hailu (Mr. Hailu Zhou) · +86 152 6973 8384</span></li>
+          <li><span>WhatsApp: +86 151 5320 3256</span></li>
+        </ul>
+      </div>
+      <form class="contact-form" data-contact-form>
+        <div class="field"><label for="contact-company">Name / Company</label><input id="contact-company" type="text" placeholder="Your name or company"></div>
+        <div class="field"><label for="contact-email">Work email</label><input id="contact-email" type="email" placeholder="Your work email"></div>
+        <div class="field"><label for="contact-product">Resource interest</label>
+          <select id="contact-product">
+            <option>Product catalog</option>
+            <option>Spec sheet</option>
+            <option>Transport test report</option>
+            <option>Drawings / sizing calculation</option>
+            <option>Certification & test documents</option>
+            <option>All resources</option>
+          </select>
+        </div>
+        <div class="field"><label for="contact-message">Message</label><textarea id="contact-message" placeholder="Which document you need and the intended use..."></textarea></div>
+        <button class="btn btn--primary" type="submit" style="width:100%">Send inquiry</button>
+        <div class="field-hint" data-contact-status aria-live="polite"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -72,37 +105,36 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img class="brand-logo footer-logo" src="../assets/images/logo-mofort.svg" alt="MoFort registered trademark">
-        <div class="footer-brand">Mofort</div>
+        <img class="brand-logo footer-logo" src="../assets/images/logo-mofort.svg" alt="MoFort Logo">
+        <div class="footer-brand">MoFort</div>
         <p>Continuous-wrapped Paper IBC and heavy-duty corrugated packaging made in Qingdao, China.</p>
       </div>
       <div>
         <h4>Products</h4>
         <a href="products.html#ibc">1000L Paper IBC</a>
-        <a href="products.html#box">1410&times;1060 Heavy-Duty Box</a>
-        <a href="products.html#options">Liners &amp; Options</a>
+        <a href="products.html#box">1410×1060 Heavy-Duty Box</a>
+        <a href="products.html#options">Liners & Accessories</a>
       </div>
       <div>
         <h4>Company</h4>
-        <a href="technology.html">Technology &amp; Certifications</a>
+        <a href="technology.html">Technology & Patents</a>
         <a href="cases.html">Application Cases</a>
         <a href="contact.html">Contact</a>
       </div>
       <div>
         <h4>Contact</h4>
-        <p>Manager Wang</p>
-        <a href="tel:+8615866807268">+86 158 6680 7268</a>
-        <a href="tel:+8615963287268">+86 159 6328 7268</a>
-        <a href="mailto:tengchengibc@gmail.com">tengchengibc@gmail.com</a>
+        <p>Zhou Hailu (Mr. Hailu Zhou)</p>
+        <a href="tel:+8615269738384">+86 152 6973 8384</a>
+        <a href="mailto:zhouhai_lu@126.com">zhouhai_lu@126.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Qingdao Tengcheng Packaging Co., Ltd. (Mofort). All rights reserved.</span>
-      <span class="source-note">ISTA 3E tested by China Packaging Research & Test (report No. 2026-Y009-211)</span>
+      <span>&copy; <span data-year>2026</span> Qingdao Tengcheng Packaging Co., Ltd. (MoFort). All rights reserved.</span>
+      <span class="source-note">Transport test to ISTA 3E, Report No. 2026-Y009-211</span>
     </div>
   </div>
 </footer>
-<script src="assets/js/resources-data.js"></script>
+<script src="../assets/js/resources-data.js"></script>
 <script src="../assets/js/main.js"></script>
 </body>
 </html>
