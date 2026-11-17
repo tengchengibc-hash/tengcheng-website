@@ -2,7 +2,7 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
-  const copyright = $("[data-year]");
+  const copyright = $"[data-year]";
   if (copyright) copyright.textContent = new Date().getFullYear();
 
   const menuToggle = $("[data-menu-toggle]");
@@ -59,7 +59,6 @@
     const densityInput = $("[data-field='density']", selectForm);
     const volumeInput = $("[data-field='volume']", selectForm);
     const stackInput = $("[data-field='stack']", selectForm);
-    const exportInput = $("[data-field='export']", selectForm);
     const modelEl = $("[data-result-model]", selectForm);
     const modelNoteEl = $("[data-result-note]", selectForm);
     const weightEl = $("[data-result-weight]", selectForm);
@@ -68,34 +67,34 @@
     const stackOutput = $("[data-stack-output]", selectForm);
 
     const specs = {
-      "IBC-7P": { note: "标准型，7 层 36mm 壁厚，适合比重 ≤1.0 的液体与散货。", bct: "详询" },
-      "IBC-8P": { note: "重载型，8 层 41mm 壁厚，适合比重 1.0~1.2 的液体。", bct: "详询" },
-      "IBC-9P": { note: "特重型，9 层 46mm 壁厚，适合比重 1.2~1.4 的液体。", bct: "详询" },
+      "IBC-7P": { note: "标准型，7 层 36mm 壁厚，适合比重 ≤1.0 g/cm³ 的液体。", bct: "详询" },
+      "IBC-8P": { note: "重载型，8 层 41mm 壁厚，适合比重 1.0~1.2 g/cm³ 的液体。", bct: "详询" },
+      "IBC-9P": { note: "特重型，9 层 46mm 壁厚，适合比重 1.2~1.4 g/cm³ 的液体。", bct: "详询" },
     };
 
     const update = () => {
       const density = Number(densityInput.value) || 1;
       const volume = Number(volumeInput.value) || 1000;
       const stack = Number(stackInput.value) || 1;
-      // 按推荐液体比重区间选型（用户 2026-11-01 确认的 3 型号体系）
+      // 按推荐液体比重区间选型
       let model = "IBC-9P";
       if (density <= 1.0) model = "IBC-7P";
       else if (density <= 1.2) model = "IBC-8P";
       const overDensity = density > 1.4;
       const spec = specs[model];
+      // 估算毛重：体积 × 比重 + 箱体估算自重，仅供初步沟通，最终以选型计算书为准
       const gross = Math.round(volume * density + 60);
-      const total = exportInput.checked ? 20000 : gross * stack;
       modelEl.textContent = overDensity ? "超出选型范围" : model;
       modelNoteEl.textContent = overDensity
         ? "比重超过 1.4 g/cm³，请直接联系工程团队核定。"
         : spec.note;
-      weightEl.textContent = `${gross.toLocaleString()} kg`;
+      weightEl.textContent = `${gross.toLocaleString()} kg（估算）`;
       loadEl.textContent = spec.bct;
       stackEl.textContent = "详询";
       if (stackOutput) stackOutput.textContent = `${stack} 层`;
     };
 
-    [densityInput, volumeInput, stackInput, exportInput].forEach((input) => {
+    [densityInput, volumeInput, stackInput].forEach((input) => {
       if (input) input.addEventListener("input", update);
     });
     update();
@@ -119,7 +118,7 @@
           meta: (r) => [r.note || "", r.category || ""].filter(Boolean).join(" · ") }
       : { all: "全部", items: "项资料", open: "打开", empty: "没有匹配的资料，请调整关键词或分类。",
           video: "视频", pdf: "PDF", image: "图片", doc: "文档", web: "网页", file: "文件",
-          meta: (r) => `${r.note || ""}${r.source ? ` · ${r.source}` : ""}` };
+          meta: (r) => r.note || "" };
 
     const list = $("[data-resource-list]", resourcePage);
     const countEl = $("[data-resource-count]", resourcePage);
@@ -195,7 +194,7 @@
       const query = searchInput ? (searchInput.value || "").trim().toLowerCase() : "";
       const rows = window.RESOURCES.filter((resource) => {
         const categoryMatch = activeCategory === ALL_CATEGORY || resource.category === activeCategory;
-        const haystack = `${resource.name} ${resource.note || ""} ${resource.source || ""} ${resource.path}`.toLowerCase();
+        const haystack = `${resource.name} ${resource.note || ""} ${resource.path}`.toLowerCase();
         return categoryMatch && (!query || haystack.includes(query));
       });
       if (countEl) {
@@ -238,16 +237,22 @@
   const contactForm = $("[data-contact-form]");
   const contactStatus = $("[data-contact-status]");
   if (contactForm && contactStatus) {
+    const isEnContact = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0;
     contactForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      const company = $("#contact-company", contactForm).value.trim() || "未填写";
-      const email = $("#contact-email", contactForm).value.trim() || "未填写";
+      const na = isEnContact ? "N/A" : "未填写";
+      const company = $("#contact-company", contactForm).value.trim() || na;
+      const email = $("#contact-email", contactForm).value.trim() || na;
       const product = $("#contact-product", contactForm).value;
-      const message = $("#contact-message", contactForm).value.trim() || "未填写";
-      const subject = encodeURIComponent(`MOLEI 摩垒产品咨询 - ${company}`);
-      const body = encodeURIComponent(`公司/姓名：${company}\n联系邮箱：${email}\n关注产品：${product}\n需求：${message}`);
-      contactStatus.textContent = "已打开邮件客户端，请发送以完成提交。";
-      window.location.href = `mailto:info@molei-packaging.com?subject=${subject}&body=${body}`;
+      const message = $("#contact-message", contactForm).value.trim() || na;
+      const subject = encodeURIComponent(`MoFort 摩垒产品咨询 - ${company}`);
+      const body = isEnContact
+        ? encodeURIComponent(`Name / Company: ${company}\nEmail: ${email}\nProduct: ${product}\nMessage: ${message}`)
+        : encodeURIComponent(`公司/姓名：${company}\n联系邮箱：${email}\n关注产品：${product}\n需求：${message}`);
+      contactStatus.textContent = isEnContact
+        ? "Mail client opened; send the message to complete the inquiry."
+        : "已打开邮件客户端，请发送以完成提交。";
+      window.location.href = `mailto:zhouhai_lu@126.com?subject=${subject}&body=${body}`;
     });
   }
 })();
