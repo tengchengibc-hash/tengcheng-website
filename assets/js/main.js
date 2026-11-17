@@ -2,7 +2,7 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
-  const copyright = $"[data-year]";
+  const copyright = $("[data-year]");
   if (copyright) copyright.textContent = new Date().getFullYear();
 
   const menuToggle = $("[data-menu-toggle]");
