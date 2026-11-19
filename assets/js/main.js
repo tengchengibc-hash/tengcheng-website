@@ -252,7 +252,7 @@
       contactStatus.textContent = isEnContact
         ? "Mail client opened; send the message to complete the inquiry."
         : "已打开邮件客户端，请发送以完成提交。";
-      window.location.href = `mailto:zhouhai_lu@126.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:tengchengibc@gmail.com?subject=${subject}&body=${body}`;
     });
   }
 })();
