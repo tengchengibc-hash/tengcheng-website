@@ -34,7 +34,7 @@
 - 主体：青岛腾珹包装有限公司
 - 品牌：MoFort（摩垒）
 - 业务联系人：周海鲁（Mr. Hailu Zhou）
-- 邮箱：zhouhai_lu@126.com
+- 邮箱：tengchengibc@gmail.com
 - 电话 / 手机：15269738384
 - WhatsApp：15153203256
 - 地址：山东省青岛市即墨区通济街道王家院村淮涉河一路 497 号
